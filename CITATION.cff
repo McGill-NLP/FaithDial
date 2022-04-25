@@ -1,0 +1,43 @@
+cff-version: "1.2.0"
+date-released: 2022-04
+message: "If you use our work, please cite it using these metadata."
+title: "FaithDial: A Faithful Benchmark for Information-Seeking Dialogue"
+url: "https://github.com/McGill-NLP/FaithDial"
+authors:
+  - family-names: Dziri
+    given-names: Nouha
+  - family-names: Kamalloo
+    given-names: Ehsan
+  - family-names: Milton
+    given-names: Sivan
+  - family-names: Zaiane
+    given-names: Osmar
+  - family-names: Yu
+    given-names: Mo
+  - family-names: Ponti
+    given-names: "Edoardo M."
+  - family-names: Reddy
+    given-names: Siva
+preferred-citation:
+  type: article
+  authors:
+  - family-names: Dziri
+    given-names: Nouha
+  - family-names: Kamalloo
+    given-names: Ehsan
+  - family-names: Milton
+    given-names: Sivan
+  - family-names: Zaiane
+    given-names: Osmar
+  - family-names: Yu
+    given-names: Mo
+  - family-names: Ponti
+    given-names: "Edoardo M."
+  - family-names: Reddy
+    given-names: Siva
+  month: 04
+  title: "FaithDial: A Faithful Benchmark for Information-Seeking Dialogue"
+  year: 2022
+  journal: "arXiv preprint arXiv:2204.10757"
+  url: "https://arxiv.org/abs/2204.10757"
+  address: "Online"
