@@ -142,10 +142,10 @@
           <!-- Links  -->
           <div class="container-fluid clearfix mb-5 mt-3">
     <div class="row">
-        <a href="https://arxiv.org/pdf/2204.xxxxx" class="btn btn-secondary btn-lg" role="button" target="_blank" rel="noopener noreferrer">
+        <a href="https://arxiv.org/abs/2204.10757" class="btn btn-secondary btn-lg" role="button" target="_blank" rel="noopener noreferrer">
             <i class="bi bi-bookmarks"></i> Paper
         </a>
-        <a href="https://github.com/McGill-NLP/FaithDial" class="btn btn-secondary btn-lg" role="button" target="_blank" rel="noopener noreferrer">
+        <a href="https://huggingface.co/datasets/McGill-NLP/FaithDial" class="btn btn-secondary btn-lg" role="button" target="_blank" rel="noopener noreferrer">
             <i class="bi bi-download"></i> Download Data
         </a>
         <a href="https://share.streamlit.io/ehsk/faithdial-explorer/main/run.py" class="btn btn-secondary btn-lg" role="button" target="_blank" rel="noopener noreferrer">
@@ -158,16 +158,23 @@
 </div>
 
           <div class="clearfix">
-            <p>The goal of information-seeking dialogue is to respond to user queries with natural language utterances that are grounded on knowledge sources.
-Dialogue systems, however, often hallucinate, i.e. generate unsupported utterances, as they amplify the noise found in existing training datasets.
-To mitigate this behavior, we adopt a data-centric solution and create FaithDial, a new benchmark for hallucination-free dialogues. Annotators were asked to edit the hallucinated utterances in a pre-existing dataset to ensure they are faithful to knowledge sources and re-purpose the role of the interlocutor from a human wizard to a domain-expert bot.</p>
+            <p>The goal of information-seeking dialogue is to respond to user queries with natural language 
+utterances that are grounded on knowledge sources.
+In <a href="https://arxiv.org/pdf/2204.07931.pdf" target="_blank" rel="noopener noreferrer">our recent investigation</a>,
+we show that existing knowledge-grounded benchmarks are fraught with hallucinations (<strong>&gt;60%</strong> of the responses).
+To mitigate this behavior, we adopt a data-centric solution and create <strong>FaithDial</strong>, a new benchmark 
+for hallucination-free dialogues by editing hallucinated responses in the
+Wizard of Wikipedia benchmark. FaithDial
+contains around 50K turns across 5.5K conversations. If trained on FaithDial, 
+we find that state-of-the-art dialogue are significantly more faithful while also enhancing other 
+dialogue aspects like cooperativeness, creativity and engagement.</p>
 
 <div class="language-bibtex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">@article</span><span class="p">{</span><span class="nl">dziri2022faithdial</span><span class="p">,</span>
   <span class="na">title</span><span class="p">=</span><span class="s">{FaithDial: A Faithful Benchmark for Information-Seeking Dialogue}</span><span class="p">,</span>
   <span class="na">author</span><span class="p">=</span><span class="s">{Dziri, Nouha and Kamalloo, Ehsan and Milton, Sivan and Zaiane, Osmar and Yu, Mo and Ponti, Edoardo and Reddy, Siva}</span><span class="p">,</span>
-  <span class="na">journal</span><span class="p">=</span><span class="s">{arXiv preprint, arXiv:2204.xxxxx}</span><span class="p">,</span>
+  <span class="na">journal</span><span class="p">=</span><span class="s">{arXiv preprint, arXiv:2204.10757}</span><span class="p">,</span>
   <span class="na">year</span><span class="p">=</span><span class="s">{2022}</span><span class="p">,</span>
-  <span class="na">url</span><span class="p">=</span><span class="s">{https://arxiv.org/abs/2204.xxxxx}</span>
+  <span class="na">url</span><span class="p">=</span><span class="s">{https://arxiv.org/abs/2204.10757}</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
