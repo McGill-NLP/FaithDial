@@ -27,9 +27,7 @@ For more information, please visit the [project page](https://mcgill-nlp.github.
 
 
 ## Overview
-The goal of information-seeking dialogue is to respond to user queries with natural language utterances that are grounded on knowledge sources.
-Dialogue systems, however, often hallucinate, i.e. generate unsupported utterances, as they amplify the noise found in existing training datasets.
-To mitigate this behavior, we adopt a data-centric solution and create FaithDial, a new benchmark for hallucination-free dialogues. Annotators were asked to edit the hallucinated utterances in a pre-existing dataset to ensure they are faithful to knowledge sources and re-purpose the role of the interlocutor from a human wizard to a domain-expert bot.
+The goal of information-seeking dialogue is to respond to user queries with natural language utterances that are grounded on knowledge sources. In [our recent investigation](https://arxiv.org/pdf/2204.07931.pdf), we show that existing knowledge-grounded benchmarks are fraught with hallucinations (>60% of the responses). To mitigate this behavior, we adopt a data-centric solution and create FaithDial, a new benchmark for hallucination-free dialogues by editing hallucinated responses in the Wizard of Wikipedia benchmark. FaithDial contains around 50K turns across 5.5K conversations. If trained on FaithDial, state-of-the-art dialogue models are significantly more faithful while also enhancing other dialogue aspects like cooperativeness, creativity and engagement.
 
 ## Data
 The dataset is hosted on [Huggingface's datasets](https://github.com/huggingface/datasets):
