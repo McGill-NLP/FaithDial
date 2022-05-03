@@ -169,9 +169,9 @@ and
 
 ```bibtex
 @article{dziri2022origin,
-  title={On the origin of hallucination in dialogue systems},
+  title={On the Origin of Hallucinations in Conversational Models: Is it the Datasets or the Models?},
   author={Dziri, Nouha and Milton, Sivan and Yu, Mo and Zaiane, Osmar and Reddy, Siva},
-  journal={arXiv preprint, arXiv:2204.07931},
+  journal={Proceedings of the 2022 Conference of the North American Chapter of the Association for Computational Linguistics (NAACL)},
   year={2022},
   url={https://arxiv.org/abs/2204.07931}
 }
