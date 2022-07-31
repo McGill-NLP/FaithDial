@@ -11,6 +11,7 @@ import pytorch_lightning as pl
 import torch
 from pytorch_lightning import loggers as pl_loggers
 from pytorch_lightning.core.saving import save_hparams_to_yaml
+from pytorch_lightning.utilities.enums import DistributedType
 from pytorch_lightning.utilities import rank_zero_info
 from torch.utils.data import DataLoader
 from transformers import (
@@ -207,6 +208,10 @@ class BaseTransformer(pl.LightningModule):
 
     def configure_metrics(self, stage: str) -> Optional[Any]:
         pass
+
+    @property
+    def use_ddp(self):
+        return self.trainer._distrib_type in (DistributedType.DDP, DistributedType.DDP_SPAWN)
 
     def get_dataloader(
         self,

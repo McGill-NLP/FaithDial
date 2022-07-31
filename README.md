@@ -1,15 +1,16 @@
 # FaithDial: A Faithful Benchmark for Information-Seeking Dialogue
 
 This repository hosts the code and pre-trained models for our paper [FaithDial: A Faithful Benchmark for Information-Seeking Dialogue](https://arxiv.org/pdf/2204.10757.pdf).
-Also, it hosts the data annotations for our NAACL paper [On the origin of hallucination in dialogue systems](https://arxiv.org/pdf/2204.07931.pdf).
+Also, it hosts the data annotations for our NAACL paper [On the origin of hallucination in dialogue systems](https://aclanthology.org/2022.naacl-main.387/).
 For more information, please visit the [project page](https://mcgill-nlp.github.io/FaithDial/).
 
 <!-- Thanks for your interest in our repo! -->
 <!-- We were inspired by SimCSE to organize this repo! 🖖 -->
 
 **************************** **Updates** ****************************
+* 7/30: We released the code for FaithCritic and uploaded [our model](https://huggingface.co/McGill-NLP/roberta-large-faithcritic) to :hugs: Hub.
 * 4/25: We released the [FaithDial paper](https://arxiv.org/abs/2204.10757) and launched the [project page](https://mcgill-nlp.github.io/FaithDial/). Check them out!
-* 4/15: We released [our paper](https://arxiv.org/abs/2204.07931), to appear at NAACL 2022!
+* 4/15: We released [our paper](https://aclanthology.org/2022.naacl-main.387/), to appear at NAACL 2022!
 
 ## Quick Links
 
@@ -22,12 +23,15 @@ For more information, please visit the [project page](https://mcgill-nlp.github.
     - [Training](#training)
     - [Evaluation](#evaluation)
     - [Generation](#generation)
+    - [Critic](#critic)
   - [Bugs or Questions?](#bugs-or-questions)
   - [Citation](#citation)
 
 
 ## Overview
-The goal of information-seeking dialogue is to respond to user queries with natural language utterances that are grounded on knowledge sources. In [our recent investigation](https://arxiv.org/pdf/2204.07931.pdf), we show that existing knowledge-grounded benchmarks are fraught with hallucinations (>60% of the responses). To mitigate this behavior, we adopt a data-centric solution and create FaithDial, a new benchmark for hallucination-free dialogues by editing hallucinated responses in the Wizard of Wikipedia benchmark. FaithDial contains around 50K turns across 5.5K conversations. If trained on FaithDial, state-of-the-art dialogue models are significantly more faithful while also enhancing other dialogue aspects like cooperativeness, creativity and engagement.
+The goal of information-seeking dialogue is to respond to user queries with natural language utterances that are grounded on knowledge sources.
+Dialogue systems, however, often hallucinate, i.e. generate unsupported utterances, as they amplify the noise found in existing training datasets.
+To mitigate this behavior, we adopt a data-centric solution and create FaithDial, a new benchmark for hallucination-free dialogues. Annotators were asked to edit the hallucinated utterances in a pre-existing dataset to ensure they are faithful to knowledge sources and re-purpose the role of the interlocutor from a human wizard to a domain-expert bot.
 
 ## Data
 The dataset is hosted on [Huggingface's datasets](https://github.com/huggingface/datasets):
@@ -147,6 +151,41 @@ Arguments for generation are as follows:
 
 For a complete list of arguments, refer to [models/generate.py](models/generate.py#L97).
 
+### Critic
+We also use our collected data to frame the problem of identifying hallucination
+as a binary classification task where the goal is to predict whether an utterance is faithful or not, given the source knowledge.
+We call this model __FaithCritic__.
+
+#### Huggingface
+```python
+import torch
+from transformers import AutoModel, AutoTokenizer
+
+tokenizer = AutoTokenizer.from_pretrained("McGill-NLP/roberta-large-faithcritic")
+model = AutoModel.from_pretrained("McGill-NLP/roberta-large-faithcritic")
+
+knowledge = "A cardigan is a type of knitted garment (sweater) that has an open front."
+response = "The old version is the regular one, knitted garment that has open front and buttons!"
+input = tokenizer(knowledge, response)
+print(torch.argmax(model(**input).logits))
+```
+
+#### Training
+```bash
+python models/critic.py --model_name_or_path roberta-large --do_train --train_batch_size 16 \
+    --learning_rate 1e-5 --weight_decay 0.1 --warmup_ratio 0.08 --pad_to_multiple_of 8 --fp16 \
+    --output_dir /path/to/output
+```
+
+#### Testing
+```bash
+python models/critic.py --model_name_or_path /path/to/model --eval_batch_size 16 --do_test
+```
+
+To test on other datasets, you need to pass `--test_task {BEGIN|MNLI}`.
+For BEGIN and MNLI, `--test_dataset_path` is required and can be downloaded from [here](https://github.com/google/BEGIN-dataset/) and [here](https://cims.nyu.edu/~sbowman/multinli/multinli_1.0.zip), respectively.
+_For MNLI, it is possible to use the version that is hosted on :hugs: Datasets by not passing `--test_dataset_path`, but the results would be slightly different._
+
 ## Bugs or questions?
 
 If you have any questions (:question:) related to the code, or encounter any problems (:hammer_and_wrench:), or want to report a bug (:bug:), feel free to open an issue.
@@ -168,14 +207,19 @@ If you want to cite our papers, please use:
 and
 
 ```bibtex
-@article{dziri2022origin,
-  title={On the Origin of Hallucinations in Conversational Models: Is it the Datasets or the Models?},
+@inproceedings{dziri2022origin,
+  title = "On the Origin of Hallucinations in Conversational Models: Is it the Datasets or the Models?",
   author={Dziri, Nouha and Milton, Sivan and Yu, Mo and Zaiane, Osmar and Reddy, Siva},
-  journal={Proceedings of the 2022 Conference of the North American Chapter of the Association for Computational Linguistics (NAACL)},
+  booktitle = "Proceedings of the 2022 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies",
   year={2022},
-  url={https://arxiv.org/abs/2204.07931}
+  pages = "5271--5285",
+  address = "Seattle, United States",
+  publisher = "Association for Computational Linguistics",
+  url = "https://aclanthology.org/2022.naacl-main.387",
 }
 ```
+
+Bibkey in aclanthology: `dziri-etal-2022-origin`.
 
 ## License
 
