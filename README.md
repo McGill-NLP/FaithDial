@@ -8,6 +8,7 @@ For more information, please visit the [project page](https://mcgill-nlp.github.
 <!-- We were inspired by SimCSE to organize this repo! 🖖 -->
 
 **************************** **Updates** ****************************
+* 9/06: FaithDial accepted to TACL! Please check out the [updated paper](https://arxiv.org/abs/2204.10757).
 * 7/30: We released the code for FaithCritic and uploaded [our model](https://huggingface.co/McGill-NLP/roberta-large-faithcritic) to :hugs: Hub.
 * 4/25: We released the [FaithDial paper](https://arxiv.org/abs/2204.10757) and launched the [project page](https://mcgill-nlp.github.io/FaithDial/). Check them out!
 * 4/15: We released [our paper](https://aclanthology.org/2022.naacl-main.387/), to appear at NAACL 2022!
