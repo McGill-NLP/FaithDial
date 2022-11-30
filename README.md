@@ -160,9 +160,9 @@ We call this model __FaithCritic__.
 #### Huggingface
 ```python
 import torch
-from transformers import AutoModel, AutoTokenizer
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
-tokenizer = AutoTokenizer.from_pretrained("McGill-NLP/roberta-large-faithcritic")
+tokenizer = AutoTokenizer.from_pretrained("McGill-NLP/roberta-large-faithcritic", return_tensors="pt")
 model = AutoModel.from_pretrained("McGill-NLP/roberta-large-faithcritic")
 
 knowledge = "A cardigan is a type of knitted garment (sweater) that has an open front."
