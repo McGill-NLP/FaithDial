@@ -35,9 +35,12 @@ preferred-citation:
     given-names: "Edoardo M."
   - family-names: Reddy
     given-names: Siva
-  month: 04
+  month: 12
   title: "FaithDial: A Faithful Benchmark for Information-Seeking Dialogue"
   year: 2022
-  journal: "arXiv preprint arXiv:2204.10757"
-  url: "https://arxiv.org/abs/2204.10757"
+  url:  "https://doi.org/10.1162/tacl_a_00529"
+  issn: "2307-387X"
+  journal: "Transactions of the Association for Computational Linguistics"
+  volume: 10
+  pages: "1473-1490"
   address: "Online"

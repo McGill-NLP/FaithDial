@@ -1,6 +1,6 @@
 # FaithDial: A Faithful Benchmark for Information-Seeking Dialogue
 
-This repository hosts the code and pre-trained models for our paper [FaithDial: A Faithful Benchmark for Information-Seeking Dialogue](https://arxiv.org/pdf/2204.10757.pdf).
+This repository hosts the code and pre-trained models for our paper [FaithDial: A Faithful Benchmark for Information-Seeking Dialogue](https://doi.org/10.1162/tacl_a_00529).
 Also, it hosts the data annotations for our NAACL paper [On the origin of hallucination in dialogue systems](https://aclanthology.org/2022.naacl-main.387/).
 For more information, please visit the [project page](https://mcgill-nlp.github.io/FaithDial/).
 
@@ -8,7 +8,7 @@ For more information, please visit the [project page](https://mcgill-nlp.github.
 <!-- We were inspired by SimCSE to organize this repo! 🖖 -->
 
 **************************** **Updates** ****************************
-* 9/06: FaithDial accepted to TACL! Please check out the [updated paper](https://arxiv.org/abs/2204.10757).
+* 9/06: FaithDial accepted to TACL! Please check out the [updated paper](https://doi.org/10.1162/tacl_a_00529).
 * 7/30: We released the code for FaithCritic and uploaded [our model](https://huggingface.co/McGill-NLP/roberta-large-faithcritic) to :hugs: Hub.
 * 4/25: We released the [FaithDial paper](https://arxiv.org/abs/2204.10757) and launched the [project page](https://mcgill-nlp.github.io/FaithDial/). Check them out!
 * 4/15: We released [our paper](https://aclanthology.org/2022.naacl-main.387/), to appear at NAACL 2022!
@@ -163,7 +163,7 @@ import torch
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 tokenizer = AutoTokenizer.from_pretrained("McGill-NLP/roberta-large-faithcritic", return_tensors="pt")
-model = AutoModel.from_pretrained("McGill-NLP/roberta-large-faithcritic")
+model = AutoModelForSequenceClassification.from_pretrained("McGill-NLP/roberta-large-faithcritic")
 
 knowledge = "A cardigan is a type of knitted garment (sweater) that has an open front."
 response = "The old version is the regular one, knitted garment that has open front and buttons!"
@@ -197,11 +197,15 @@ If you want to cite our papers, please use:
 
 ```bibtex
 @article{dziri2022faithdial,
-  title={FaithDial: A Faithful Benchmark for Information-Seeking Dialogue},
-  author={Dziri, Nouha and Kamalloo, Ehsan and Milton, Sivan and Zaiane, Osmar and Yu, Mo and Ponti, Edoardo and Reddy, Siva},
-  journal={arXiv preprint, arXiv:2204.10757},
-  year={2022},
-  url={https://arxiv.org/abs/2204.10757}
+  title = "{FaithDial: A Faithful Benchmark for Information-Seeking Dialogue}",
+  author = {Dziri, Nouha and Kamalloo, Ehsan and Milton, Sivan and Zaiane, Osmar and Yu, Mo and Ponti, Edoardo M and Reddy, Siva},
+  journal = {Transactions of the Association for Computational Linguistics},
+  volume = {10},
+  pages = {1473--1490},
+  year = {2022},
+  month = {12},
+  publisher = {MIT Press},
+  doi={10.1162/tacl_a_00529}
 }
 ```
 
@@ -210,13 +214,13 @@ and
 ```bibtex
 @inproceedings{dziri2022origin,
   title = "On the Origin of Hallucinations in Conversational Models: Is it the Datasets or the Models?",
-  author={Dziri, Nouha and Milton, Sivan and Yu, Mo and Zaiane, Osmar and Reddy, Siva},
+  author = {Dziri, Nouha and Milton, Sivan and Yu, Mo and Zaiane, Osmar and Reddy, Siva},
   booktitle = "Proceedings of the 2022 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies",
-  year={2022},
+  year = {2022},
   pages = "5271--5285",
   address = "Seattle, United States",
   publisher = "Association for Computational Linguistics",
-  url = "https://aclanthology.org/2022.naacl-main.387",
+  url = "https://aclanthology.org/2022.naacl-main.387"
 }
 ```
 
